@@ -17,11 +17,12 @@ namespace USteuerbetrag
             InitializeComponent();
         }
 
-        private void CmdAusgabe_Click(object sender, EventArgs e)
+        private void CmdAnzeige_Click(object sender, EventArgs e)
         {
-            int gehalt, steuersatz, steuerbetrag = 0;
-            gehalt = Convert.ToInt32(TxtEingabe.Text);
-
+            int steuersatz, steuerbetrag = 0;
+            LblAusgabe.Text = "";
+            for (int gehalt= 5000; gehalt<=35000; gehalt+=3000)
+            {
             if (gehalt <= 12000)
                 steuersatz = 12;
             else if
@@ -33,8 +34,13 @@ namespace USteuerbetrag
                 steuersatz = 25;
 
             steuerbetrag = gehalt * steuersatz / 100;
-            LblSteuersatz.Text = "Steuersatz: " + steuersatz + "%";
-            LblAusgabe.Text = "Steuerbetrag: " + steuerbetrag; 
+                LblAusgabe.Text += gehalt + " " + steuersatz + "%" +
+                " " + steuerbetrag + " " + (gehalt + steuerbetrag) + "\n";
+            }
+           
+           
+
+            
         }
     }
 }
